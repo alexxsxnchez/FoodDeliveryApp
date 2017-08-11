@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        guard let window = window else {
+            print("Error occurred with launching app")
+            return true
+        }
+        
+        
+        window.tintColor = themeColor
+        
+        let mainViewController = ViewController()
+        mainViewController.view.backgroundColor = themeColor
+        let navigationController = UINavigationController(rootViewController: mainViewController)
+        window.rootViewController = navigationController
+        
+        window.makeKeyAndVisible()
         return true
     }
 
