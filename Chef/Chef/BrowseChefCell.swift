@@ -44,6 +44,41 @@ class BrowseChefCell: UICollectionViewCell {
         return label
     }()
     
+    fileprivate let ratingStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.alignment = .center
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.spacing = 4
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let starPointSize: CGFloat = 15
+        for _ in 1...5 {
+            let emptyStarImageView = UIImageView(image: #imageLiteral(resourceName: "empty_star"))
+            emptyStarImageView.translatesAutoresizingMaskIntoConstraints = false
+            emptyStarImageView.contentMode = .scaleAspectFit
+            emptyStarImageView.heightAnchor.constraint(equalToConstant: starPointSize).isActive = true
+            emptyStarImageView.widthAnchor.constraint(equalToConstant: starPointSize).isActive = true
+            
+            let filledStarImageView = UIImageView(image: #imageLiteral(resourceName: "filled_star"))
+            emptyStarImageView.addSubview(filledStarImageView)
+
+            filledStarImageView.translatesAutoresizingMaskIntoConstraints = false
+            filledStarImageView.contentMode = .scaleAspectFit
+            filledStarImageView.heightAnchor.constraint(equalToConstant: starPointSize).isActive = true
+            filledStarImageView.widthAnchor.constraint(equalToConstant: starPointSize).isActive = true
+            filledStarImageView.centerXAnchor.constraint(equalTo: filledStarImageView.superview!.centerXAnchor).isActive = true
+            filledStarImageView.centerYAnchor.constraint(equalTo: filledStarImageView.superview!.centerYAnchor).isActive = true
+            
+            // set the filledStars initial height and width for masking purposes during initial load of cell
+            filledStarImageView.frame.size.height = starPointSize
+            filledStarImageView.frame.size.width = starPointSize
+            
+            stackView.addArrangedSubview(emptyStarImageView)
+        }
+        return stackView
+    }()
+    
     fileprivate let ratingLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +92,7 @@ class BrowseChefCell: UICollectionViewCell {
             imageView.image = nil
             nameLabel.text = chef.name
             specialityLabel.text = "Food Speciality"
-            ratingLabel.text = "Rating Stars"
+            setRatingImageViews()
         }
     }
     
@@ -68,7 +103,7 @@ class BrowseChefCell: UICollectionViewCell {
         addSubview(imageView)
         addSubview(nameLabel)
         addSubview(specialityLabel)
-        addSubview(ratingLabel)
+        addSubview(ratingStackView)
         
         // imageView
         imageView.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
@@ -85,14 +120,37 @@ class BrowseChefCell: UICollectionViewCell {
         specialityLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0).isActive = true
         specialityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4).isActive = true
         
-        // ratingLabel
-        ratingLabel.topAnchor.constraint(equalTo: specialityLabel.bottomAnchor, constant: 0).isActive = true
-        ratingLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4).isActive = true
-        
+        // ratingStackView
+        ratingStackView.topAnchor.constraint(equalTo: specialityLabel.bottomAnchor, constant: 0).isActive = true
+        ratingStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    
+    func setRatingImageViews() {
+        
+        let emptyStars = ratingStackView.arrangedSubviews
+        let rating = chef.rating
+        for (index, emptyStar) in emptyStars.enumerated() {
+            let filledStar = emptyStar.subviews.first!
+            if Double(index + 1) <= rating {
+                filledStar.layer.mask = nil
+                filledStar.isHidden = false
+            } else if Double(index) < rating && rating < Double(index + 1) {
+                let maskLayer = CALayer()
+                let width = CGFloat(rating - Double(index)) * filledStar.frame.width
+                maskLayer.frame = CGRect(x: 0, y: 0, width: width, height: filledStar.frame.height)
+                maskLayer.backgroundColor = UIColor.black.cgColor
+                filledStar.isHidden = false
+                filledStar.layer.mask = maskLayer
+                
+            } else {
+                filledStar.layer.mask = nil
+                filledStar.isHidden = true
+            }
+        }
+    }
 }

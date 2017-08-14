@@ -12,5 +12,5 @@ struct Chef {
     var name: String
 //    var profileImage: UIImage?
 //    var speciality: Speciality // enum
-//    var rating: Double
+    var rating: Double
 }

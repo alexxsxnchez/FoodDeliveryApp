@@ -66,11 +66,11 @@
 			children = (
 				6B59FB681F3E00F30031BBB1 /* CustomTabBarController.swift */,
 				6B59FB4A1F3DF8D00031BBB1 /* AppDelegate.swift */,
+				6B59FB601F3DFC7E0031BBB1 /* Chef.swift */,
 				6B59FB4C1F3DF8D00031BBB1 /* BrowseViewController.swift */,
 				6B59FB621F3DFD5A0031BBB1 /* BrowseDivisionCellDataSource.swift */,
-				6B59FB641F3DFF090031BBB1 /* BrowseChefCellDataSource.swift */,
 				6B59FB5C1F3DFB0E0031BBB1 /* BrowseDivisionCell.swift */,
-				6B59FB601F3DFC7E0031BBB1 /* Chef.swift */,
+				6B59FB641F3DFF090031BBB1 /* BrowseChefCellDataSource.swift */,
 				6B59FB5E1F3DFBA20031BBB1 /* BrowseChefCell.swift */,
 				6B59FB511F3DF8D00031BBB1 /* Assets.xcassets */,
 				6B59FB531F3DF8D00031BBB1 /* LaunchScreen.storyboard */,

@@ -17,15 +17,15 @@ class BrowseDivisionCell: UICollectionViewCell {
     
     let dataSource = BrowseChefCellDataSource(chefs:
         [
-            Chef(name: "very very very extremely long name"),//, image: nil, category: "category", price: 1.99),
-            Chef(name: "very very long name"),// image: nil, category: "category", price: 3.99),
-            Chef(name: "name"),// image: nil, category: "category", price: 0.99),
-            Chef(name: "name"),// image: nil, category: "category", price: 1.99),
-            Chef(name: "name"),// image: nil, category: "category", price: 3.99),
-            Chef(name: "name"),// image: nil, category: "category", price: 0.99),
-            Chef(name: "name"),// image: nil, category: "category", price: 1.99),
-            Chef(name: "name"),// image: nil, category: "category", price: 3.99),
-            Chef(name: "name")//, image: nil, category: "category", price: 0.99)
+            Chef(name: "very very very extremely long name", rating: 0),//, image: nil, category: "category", price: 1.99),
+            Chef(name: "very very long name", rating: 0.33),// image: nil, category: "category", price: 3.99),
+            Chef(name: "name", rating: 0.75),// image: nil, category: "category", price: 0.99),
+            Chef(name: "name", rating: 2.4),// image: nil, category: "category", price: 1.99),
+            Chef(name: "name", rating: 3.4),// image: nil, category: "category", price: 3.99),
+            Chef(name: "name", rating: 4.2),// image: nil, category: "category", price: 0.99),
+            Chef(name: "name", rating: 4.5),// image: nil, category: "category", price: 1.99),
+            Chef(name: "name", rating: 4.9),// image: nil, category: "category", price: 3.99),
+            Chef(name: "name", rating: 5)//, image: nil, category: "category", price: 0.99)
         ])
     
     var divisionHeader: String? {
@@ -64,6 +64,7 @@ class BrowseDivisionCell: UICollectionViewCell {
         collectionView.register(BrowseChefCell.self, forCellWithReuseIdentifier: BrowseChefCell.PropertyKeys.cellIdentifier)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.decelerationRate = UIScrollViewDecelerationRateFast
         return collectionView
         
     }()
@@ -116,11 +117,11 @@ class BrowseDivisionCell: UICollectionViewCell {
 
 extension BrowseDivisionCell: UICollectionViewDelegateFlowLayout {
  
-     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: collectionView.frame.height)
-     }
+    }
      
-     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
-     }
- }
+    }
+}
