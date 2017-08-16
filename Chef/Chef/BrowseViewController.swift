@@ -8,10 +8,31 @@
 
 import UIKit
 
+protocol DetailPresentor {
+    func presentDetails(collectionViewTag: Int, indexPath: IndexPath)
+    func presentSeeAll(collectionViewTag: Int)
+}
+
 class BrowseViewController: UIViewController {
 
     // MARK: - Properties
-    let dataSource = BrowseDivisionCellDataSource(divisionHeaders: ["New Chefs", "Available Chefs", "Top Rated Chefs", "Your Recently Viewed", "Your Favorites"])
+    var divisionCollectionViewDataSource: BrowseDivisionCellDataSource! {
+        didSet {
+            collectionView.dataSource = divisionCollectionViewDataSource
+        }
+    }
+    
+    var divisionCollectionViewDelegate: BrowseDivisionCellDelegate! {
+        didSet {
+            collectionView.delegate = divisionCollectionViewDelegate
+        }
+    }
+    
+    var chefCollectionViewDataSource: BrowseChefCellDataSource!
+    
+    var chefCollectionViewDelegate: BrowseChefCellDelegate!
+    
+    var stateController: StateController!
     
     // MARK: - UI Elements
     let collectionView: UICollectionView = {
@@ -24,7 +45,7 @@ class BrowseViewController: UIViewController {
         return collectionView
     }()
     
-    // MARK: - Functions
+    // MARK: - Init
     override func viewDidLoad() {
         navigationItem.title = "Browse"
         
@@ -34,11 +55,15 @@ class BrowseViewController: UIViewController {
     }
     
     func setupCollectionView() {
+        chefCollectionViewDataSource = BrowseChefCellDataSource(stateController: stateController)
+        chefCollectionViewDelegate = BrowseChefCellDelegate(presentor: self)
         
-        collectionView.dataSource = dataSource
-        collectionView.delegate = self
+        divisionCollectionViewDataSource = BrowseDivisionCellDataSource(presentor: self)
+        divisionCollectionViewDelegate = BrowseDivisionCellDelegate(chefCollectionViewDataSource: chefCollectionViewDataSource, chefCollectionViewDelegate: chefCollectionViewDelegate)
+        
         view.addSubview(collectionView)
-        collectionView.reloadData()
+        
+        // constraints
         collectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -46,15 +71,23 @@ class BrowseViewController: UIViewController {
     }
 }
 
-extension BrowseViewController : UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 230)
+extension BrowseViewController: DetailPresentor {
+    
+    func presentDetails(collectionViewTag: Int, indexPath: IndexPath) {
+        let divisionHeader = DivisionHeader(rawValue: collectionViewTag)!
+        let chef = stateController.chefController.fetchChefs(for: divisionHeader)[indexPath.row]
+        let detailViewController = ChefDetailViewController()
+        detailViewController.chef = chef
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 0)
+    func presentSeeAll(collectionViewTag: Int) {
+        let divisionHeader = DivisionHeader(rawValue: collectionViewTag)!
+        let seeAllViewController = SeeAllViewController()
+        seeAllViewController.divisionHeader = divisionHeader
+        navigationController?.pushViewController(seeAllViewController, animated: true)
+    
     }
-
+    
 }
 

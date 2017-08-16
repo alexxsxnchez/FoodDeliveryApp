@@ -15,24 +15,17 @@ class BrowseDivisionCell: UICollectionViewCell {
         static let cellIdentifier = "browseDivisionCellId"
     }
     
-    let dataSource = BrowseChefCellDataSource(chefs:
-        [
-            Chef(name: "very very very extremely long name", rating: 0),//, image: nil, category: "category", price: 1.99),
-            Chef(name: "very very long name", rating: 0.33),// image: nil, category: "category", price: 3.99),
-            Chef(name: "name", rating: 0.75),// image: nil, category: "category", price: 0.99),
-            Chef(name: "name", rating: 2.4),// image: nil, category: "category", price: 1.99),
-            Chef(name: "name", rating: 3.4),// image: nil, category: "category", price: 3.99),
-            Chef(name: "name", rating: 4.2),// image: nil, category: "category", price: 0.99),
-            Chef(name: "name", rating: 4.5),// image: nil, category: "category", price: 1.99),
-            Chef(name: "name", rating: 4.9),// image: nil, category: "category", price: 3.99),
-            Chef(name: "name", rating: 5)//, image: nil, category: "category", price: 0.99)
-        ])
-    
-    var divisionHeader: String? {
-        didSet {
-            divisionHeaderLabel.text = divisionHeader
+    var collectionViewOffset: CGFloat {
+        get {
+            return collectionView.contentOffset.x
+        }
+        
+        set {
+            collectionView.contentOffset.x = newValue
         }
     }
+    
+    var presentor: DetailPresentor!
     
     // MARK: - UIElements
     fileprivate let divisionHeaderLabel: UILabel = {
@@ -42,17 +35,19 @@ class BrowseDivisionCell: UICollectionViewCell {
         return label
     }()
     
-    fileprivate let seeAllButton: UIButton = {
+    let seeAllButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         
         let attributedText = NSMutableAttributedString(string: "See All ", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 13), NSForegroundColorAttributeName: UIColor.darkGray])
         attributedText.append(NSMutableAttributedString(string: ">", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 15), NSForegroundColorAttributeName: UIColor.lightGray]))
         button.setAttributedTitle(attributedText, for: .normal)
-        
+        button.isUserInteractionEnabled = true
         button.setTitleColor(.darkGray, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         button.isEnabled = true
+        //button.addTarget(self, action: #selector(SeeAllButtonTapped(sender:)), for: .touchUpInside)
+        button.sizeToFit()
         return button
     }()
     
@@ -80,29 +75,29 @@ class BrowseDivisionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        collectionView.delegate = self
-        collectionView.dataSource = dataSource
-        
         addSubview(divisionHeaderLabel)
         addSubview(seeAllButton)
         addSubview(collectionView)
         addSubview(dividerLine)
         
-        // divisionHeaderLabel
+        seeAllButton.addTarget(self, action: #selector(SeeAllButtonTapped(sender:)), for: .touchUpInside)
+        
+        // divisionHeaderLabel constraint
         divisionHeaderLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         divisionHeaderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         
-        // seeAllButton
+        // seeAllButton constraints
         seeAllButton.firstBaselineAnchor.constraint(equalTo: divisionHeaderLabel.firstBaselineAnchor).isActive = true
         seeAllButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
         
-        // collectionView
+        
+        // collectionView constraints
         collectionView.topAnchor.constraint(equalTo: divisionHeaderLabel.bottomAnchor, constant: 4).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        // dividerLine
+        // dividerLine constraints
         dividerLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         dividerLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         dividerLine.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
@@ -113,15 +108,20 @@ class BrowseDivisionCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-}
-
-extension BrowseDivisionCell: UICollectionViewDelegateFlowLayout {
- 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: collectionView.frame.height)
+    // MARK: - Functions
+    func configureCell(divisionHeader: DivisionHeader, presentor: DetailPresentor) {
+        divisionHeaderLabel.text = divisionHeader.asString()
+        self.presentor = presentor
     }
-     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
+    
+    func setCollectionViewDataSourceDelegate(dataSource: UICollectionViewDataSource, delegate: UICollectionViewDelegate, for row: Int) {
+        collectionView.dataSource = dataSource
+        collectionView.delegate = delegate
+        collectionView.tag = row
     }
+    
+    func SeeAllButtonTapped(sender: UIButton!) {
+        presentor.presentSeeAll(collectionViewTag: collectionView.tag)
+    }
+    
 }

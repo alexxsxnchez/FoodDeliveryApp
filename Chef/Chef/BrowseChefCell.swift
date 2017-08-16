@@ -87,15 +87,6 @@ class BrowseChefCell: UICollectionViewCell {
         return label
     }()
     
-    var chef: Chef! {
-        didSet {
-            imageView.image = nil
-            nameLabel.text = chef.name
-            specialityLabel.text = "Food Speciality"
-            setRatingImageViews()
-        }
-    }
-    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -104,6 +95,7 @@ class BrowseChefCell: UICollectionViewCell {
         addSubview(nameLabel)
         addSubview(specialityLabel)
         addSubview(ratingStackView)
+        
         
         // imageView
         imageView.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
@@ -129,11 +121,18 @@ class BrowseChefCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
+    // MARK: - Functions
     
-    func setRatingImageViews() {
+    func configureCell(chef: Chef) {
+        imageView.image = nil
+        nameLabel.text = chef.name
+        specialityLabel.text = "Food Speciality"
+        setRatingImageViews(rating: chef.rating)
+    }
+    
+    fileprivate func setRatingImageViews(rating: Double) {
         
         let emptyStars = ratingStackView.arrangedSubviews
-        let rating = chef.rating
         for (index, emptyStar) in emptyStars.enumerated() {
             let filledStar = emptyStar.subviews.first!
             if Double(index + 1) <= rating {

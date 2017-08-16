@@ -17,6 +17,15 @@
 		6B59FB631F3DFD5A0031BBB1 /* BrowseDivisionCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB621F3DFD5A0031BBB1 /* BrowseDivisionCellDataSource.swift */; };
 		6B59FB651F3DFF090031BBB1 /* BrowseChefCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB641F3DFF090031BBB1 /* BrowseChefCellDataSource.swift */; };
 		6B59FB691F3E00F30031BBB1 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB681F3E00F30031BBB1 /* CustomTabBarController.swift */; };
+		6B59FB6B1F424A040031BBB1 /* ChefController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB6A1F424A040031BBB1 /* ChefController.swift */; };
+		6B59FB6D1F424A7E0031BBB1 /* DivisionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB6C1F424A7E0031BBB1 /* DivisionHeader.swift */; };
+		6B59FB6F1F4291BA0031BBB1 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB6E1F4291BA0031BBB1 /* NetworkController.swift */; };
+		6B59FB711F429BC80031BBB1 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB701F429BC80031BBB1 /* StateController.swift */; };
+		6B59FB781F437CA20031BBB1 /* BrowseChefCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB771F437CA20031BBB1 /* BrowseChefCellDelegate.swift */; };
+		6B59FB7B1F437E090031BBB1 /* BrowseDivisionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB7A1F437E090031BBB1 /* BrowseDivisionCellDelegate.swift */; };
+		6B59FB7D1F4380460031BBB1 /* ChefDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB7C1F4380460031BBB1 /* ChefDetailViewController.swift */; };
+		6B59FB7F1F4383B60031BBB1 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB7E1F4383B60031BBB1 /* OrderController.swift */; };
+		6B59FB811F449A320031BBB1 /* SeeAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB801F449A320031BBB1 /* SeeAllViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +41,15 @@
 		6B59FB621F3DFD5A0031BBB1 /* BrowseDivisionCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseDivisionCellDataSource.swift; sourceTree = "<group>"; };
 		6B59FB641F3DFF090031BBB1 /* BrowseChefCellDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseChefCellDataSource.swift; sourceTree = "<group>"; };
 		6B59FB681F3E00F30031BBB1 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBarController.swift; path = ../CustomTabBarController.swift; sourceTree = "<group>"; };
+		6B59FB6A1F424A040031BBB1 /* ChefController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChefController.swift; sourceTree = "<group>"; };
+		6B59FB6C1F424A7E0031BBB1 /* DivisionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivisionHeader.swift; sourceTree = "<group>"; };
+		6B59FB6E1F4291BA0031BBB1 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		6B59FB701F429BC80031BBB1 /* StateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
+		6B59FB771F437CA20031BBB1 /* BrowseChefCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseChefCellDelegate.swift; sourceTree = "<group>"; };
+		6B59FB7A1F437E090031BBB1 /* BrowseDivisionCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseDivisionCellDelegate.swift; sourceTree = "<group>"; };
+		6B59FB7C1F4380460031BBB1 /* ChefDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChefDetailViewController.swift; sourceTree = "<group>"; };
+		6B59FB7E1F4383B60031BBB1 /* OrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderController.swift; sourceTree = "<group>"; };
+		6B59FB801F449A320031BBB1 /* SeeAllViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,19 +82,76 @@
 		6B59FB491F3DF8D00031BBB1 /* Chef */ = {
 			isa = PBXGroup;
 			children = (
-				6B59FB681F3E00F30031BBB1 /* CustomTabBarController.swift */,
 				6B59FB4A1F3DF8D00031BBB1 /* AppDelegate.swift */,
-				6B59FB601F3DFC7E0031BBB1 /* Chef.swift */,
-				6B59FB4C1F3DF8D00031BBB1 /* BrowseViewController.swift */,
-				6B59FB621F3DFD5A0031BBB1 /* BrowseDivisionCellDataSource.swift */,
-				6B59FB5C1F3DFB0E0031BBB1 /* BrowseDivisionCell.swift */,
-				6B59FB641F3DFF090031BBB1 /* BrowseChefCellDataSource.swift */,
-				6B59FB5E1F3DFBA20031BBB1 /* BrowseChefCell.swift */,
+				6B59FB761F434F730031BBB1 /* Models */,
+				6B59FB721F434EEB0031BBB1 /* ModelControllers */,
+				6B59FB741F434F2B0031BBB1 /* ViewControllers */,
+				6B59FB731F434F120031BBB1 /* Views */,
 				6B59FB511F3DF8D00031BBB1 /* Assets.xcassets */,
 				6B59FB531F3DF8D00031BBB1 /* LaunchScreen.storyboard */,
 				6B59FB561F3DF8D00031BBB1 /* Info.plist */,
 			);
 			path = Chef;
+			sourceTree = "<group>";
+		};
+		6B59FB721F434EEB0031BBB1 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6B59FB701F429BC80031BBB1 /* StateController.swift */,
+				6B59FB6E1F4291BA0031BBB1 /* NetworkController.swift */,
+				6B59FB7E1F4383B60031BBB1 /* OrderController.swift */,
+				6B59FB6A1F424A040031BBB1 /* ChefController.swift */,
+			);
+			name = ModelControllers;
+			sourceTree = "<group>";
+		};
+		6B59FB731F434F120031BBB1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6B59FB5C1F3DFB0E0031BBB1 /* BrowseDivisionCell.swift */,
+				6B59FB5E1F3DFBA20031BBB1 /* BrowseChefCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6B59FB741F434F2B0031BBB1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6B59FB681F3E00F30031BBB1 /* CustomTabBarController.swift */,
+				6B59FB4C1F3DF8D00031BBB1 /* BrowseViewController.swift */,
+				6B59FB7C1F4380460031BBB1 /* ChefDetailViewController.swift */,
+				6B59FB801F449A320031BBB1 /* SeeAllViewController.swift */,
+				6B59FB751F434F570031BBB1 /* DataSources */,
+				6B59FB791F437DE90031BBB1 /* CollectionViewDelegates */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6B59FB751F434F570031BBB1 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				6B59FB621F3DFD5A0031BBB1 /* BrowseDivisionCellDataSource.swift */,
+				6B59FB641F3DFF090031BBB1 /* BrowseChefCellDataSource.swift */,
+			);
+			name = DataSources;
+			sourceTree = "<group>";
+		};
+		6B59FB761F434F730031BBB1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6B59FB601F3DFC7E0031BBB1 /* Chef.swift */,
+				6B59FB6C1F424A7E0031BBB1 /* DivisionHeader.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		6B59FB791F437DE90031BBB1 /* CollectionViewDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				6B59FB7A1F437E090031BBB1 /* BrowseDivisionCellDelegate.swift */,
+				6B59FB771F437CA20031BBB1 /* BrowseChefCellDelegate.swift */,
+			);
+			name = CollectionViewDelegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,14 +226,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B59FB7F1F4383B60031BBB1 /* OrderController.swift in Sources */,
+				6B59FB6F1F4291BA0031BBB1 /* NetworkController.swift in Sources */,
+				6B59FB711F429BC80031BBB1 /* StateController.swift in Sources */,
+				6B59FB781F437CA20031BBB1 /* BrowseChefCellDelegate.swift in Sources */,
+				6B59FB6B1F424A040031BBB1 /* ChefController.swift in Sources */,
 				6B59FB4D1F3DF8D00031BBB1 /* BrowseViewController.swift in Sources */,
 				6B59FB651F3DFF090031BBB1 /* BrowseChefCellDataSource.swift in Sources */,
 				6B59FB691F3E00F30031BBB1 /* CustomTabBarController.swift in Sources */,
 				6B59FB5D1F3DFB0E0031BBB1 /* BrowseDivisionCell.swift in Sources */,
+				6B59FB7B1F437E090031BBB1 /* BrowseDivisionCellDelegate.swift in Sources */,
+				6B59FB6D1F424A7E0031BBB1 /* DivisionHeader.swift in Sources */,
 				6B59FB4B1F3DF8D00031BBB1 /* AppDelegate.swift in Sources */,
 				6B59FB631F3DFD5A0031BBB1 /* BrowseDivisionCellDataSource.swift in Sources */,
 				6B59FB611F3DFC7E0031BBB1 /* Chef.swift in Sources */,
+				6B59FB7D1F4380460031BBB1 /* ChefDetailViewController.swift in Sources */,
 				6B59FB5F1F3DFBA20031BBB1 /* BrowseChefCell.swift in Sources */,
+				6B59FB811F449A320031BBB1 /* SeeAllViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

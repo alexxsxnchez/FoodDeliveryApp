@@ -10,23 +10,25 @@ import UIKit
 
 class BrowseDivisionCellDataSource: NSObject {
     
-    var divisionHeaders: [String]
+    let presentor: DetailPresentor
     
-    init(divisionHeaders: [String]) {
-        self.divisionHeaders = divisionHeaders
+    init(presentor: DetailPresentor) {
+        self.presentor = presentor
+        super.init()
     }
-    
 }
 
 extension BrowseDivisionCellDataSource: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return divisionHeaders.count
+        return DivisionHeader.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrowseDivisionCell.PropertyKeys.cellIdentifier, for: indexPath) as! BrowseDivisionCell
-        cell.divisionHeader = divisionHeaders[indexPath.row]
+        
+        let divisionHeader = DivisionHeader(rawValue: indexPath.row)!
+        cell.configureCell(divisionHeader: divisionHeader, presentor: presentor)
         return cell
     }
 
