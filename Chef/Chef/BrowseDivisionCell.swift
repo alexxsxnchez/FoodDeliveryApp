@@ -25,7 +25,7 @@ class BrowseDivisionCell: UICollectionViewCell {
         }
     }
     
-    var presentor: DetailPresentor!
+    var presentor: BrowsePresentor!
     
     // MARK: - UIElements
     fileprivate let divisionHeaderLabel: UILabel = {
@@ -46,7 +46,6 @@ class BrowseDivisionCell: UICollectionViewCell {
         button.setTitleColor(.darkGray, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         button.isEnabled = true
-        //button.addTarget(self, action: #selector(SeeAllButtonTapped(sender:)), for: .touchUpInside)
         button.sizeToFit()
         return button
     }()
@@ -82,26 +81,27 @@ class BrowseDivisionCell: UICollectionViewCell {
         
         seeAllButton.addTarget(self, action: #selector(SeeAllButtonTapped(sender:)), for: .touchUpInside)
         
-        // divisionHeaderLabel constraint
-        divisionHeaderLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        divisionHeaderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        
-        // seeAllButton constraints
-        seeAllButton.firstBaselineAnchor.constraint(equalTo: divisionHeaderLabel.firstBaselineAnchor).isActive = true
-        seeAllButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-        
-        
-        // collectionView constraints
-        collectionView.topAnchor.constraint(equalTo: divisionHeaderLabel.bottomAnchor, constant: 4).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
-        // dividerLine constraints
-        dividerLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        dividerLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        dividerLine.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        dividerLine.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            // divisionHeaderLabel constraint
+            divisionHeaderLabel.topAnchor.constraint(equalTo: topAnchor),
+            divisionHeaderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            
+            // seeAllButton constraints
+            seeAllButton.firstBaselineAnchor.constraint(equalTo: divisionHeaderLabel.firstBaselineAnchor),
+            seeAllButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            // collectionView constraints
+            collectionView.topAnchor.constraint(equalTo: divisionHeaderLabel.bottomAnchor, constant: 4),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            // dividerLine constraints
+            dividerLine.heightAnchor.constraint(equalToConstant: 0.5),
+            dividerLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            dividerLine.trailingAnchor.constraint(equalTo: trailingAnchor),
+            dividerLine.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -109,7 +109,7 @@ class BrowseDivisionCell: UICollectionViewCell {
     }
     
     // MARK: - Functions
-    func configureCell(divisionHeader: DivisionHeader, presentor: DetailPresentor) {
+    func configureCell(divisionHeader: DivisionHeader, presentor: BrowsePresentor) {
         divisionHeaderLabel.text = divisionHeader.asString()
         self.presentor = presentor
     }
@@ -121,7 +121,7 @@ class BrowseDivisionCell: UICollectionViewCell {
     }
     
     func SeeAllButtonTapped(sender: UIButton!) {
-        presentor.presentSeeAll(collectionViewTag: collectionView.tag)
+        presentor.SeeAllButtonTapped(collectionViewTag: collectionView.tag)
     }
     
 }

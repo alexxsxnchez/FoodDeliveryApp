@@ -12,23 +12,34 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let stateController = StateController()
+    var appRouter: AppRouter!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // Colour of navigation bar
         UINavigationBar.appearance().barTintColor = UIColor.red//UIColor(red: 51/255, green: 90/255, blue: 149/255, alpha: 1)
+        
+        // Title colour appearance
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        // Back button colour appearance
+        UINavigationBar.appearance().tintColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
+        
+        // Tab bar item colours
         UITabBar.appearance().tintColor = UIColor.red
+        
+        // Colour of tab bar
         //UITabBar.appearance().barTintColor = UIColor.black
         
         // Change the status bar color (where the battery and time is) must add something in info.plist
         application.statusBarStyle = .lightContent
         
         // Setup root view controller
-        let customTabBarController = CustomTabBarController(stateController: stateController)
-        
-        window?.rootViewController = customTabBarController
+        let tabBarController = UITabBarController()
+        appRouter = AppRouter(tabBarController: tabBarController)
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         
         return true

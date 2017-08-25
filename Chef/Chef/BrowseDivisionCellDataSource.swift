@@ -10,9 +10,9 @@ import UIKit
 
 class BrowseDivisionCellDataSource: NSObject {
     
-    let presentor: DetailPresentor
+    let presentor: BrowsePresentor
     
-    init(presentor: DetailPresentor) {
+    init(presentor: BrowsePresentor) {
         self.presentor = presentor
         super.init()
     }

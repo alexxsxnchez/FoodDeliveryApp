@@ -10,28 +10,30 @@ import UIKit
 
 class BrowseChefCellDataSource: NSObject {
     
-    let stateController: StateController
+    let chefs: [DivisionHeader:[Chef]]
     
-    init(stateController: StateController) {
-        self.stateController = stateController
+    init(chefs: [DivisionHeader:[Chef]]) {
+        self.chefs = chefs
         super.init()
+    }
+    
+    func getChefsForCollectionViewTag(collectionViewTag: Int) -> [Chef] {
+        let divisionHeader = DivisionHeader(rawValue: collectionViewTag)!
+        return chefs[divisionHeader]!
     }
 }
 
 extension BrowseChefCellDataSource: UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        let divisionHeader = DivisionHeader(rawValue: collectionView.tag)!
-        let chefs = stateController.chefController.fetchChefs(for: divisionHeader)
+        let chefs = getChefsForCollectionViewTag(collectionViewTag: collectionView.tag)
         return chefs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrowseChefCell.PropertyKeys.cellIdentifier, for: indexPath) as! BrowseChefCell
         
-        let divisionHeader = DivisionHeader(rawValue: collectionView.tag)!
-        let chefs = stateController.chefController.fetchChefs(for: divisionHeader)
+        let chefs = getChefsForCollectionViewTag(collectionViewTag: collectionView.tag)
         cell.configureCell(chef: chefs[indexPath.row])
         return cell
     }

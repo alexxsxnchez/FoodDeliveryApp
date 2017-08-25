@@ -10,9 +10,11 @@ import UIKit
 
 class BrowseChefCellDelegate : NSObject {
     
-    let presentor: DetailPresentor
+    let presentor: BrowsePresentor
+    let chefs: [DivisionHeader:[Chef]]
     
-    init(presentor: DetailPresentor) {
+    init(chefs: [DivisionHeader:[Chef]], presentor: BrowsePresentor) {
+        self.chefs = chefs
         self.presentor = presentor
         super.init()
     }
@@ -30,7 +32,9 @@ extension BrowseChefCellDelegate : UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentor.presentDetails(collectionViewTag: collectionView.tag, indexPath: indexPath)
+        
+        presentor.ChefCellTapped(collectionViewTag: collectionView.tag, row: indexPath.row)
+        
     }
     
 }

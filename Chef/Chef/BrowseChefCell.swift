@@ -44,48 +44,7 @@ class BrowseChefCell: UICollectionViewCell {
         return label
     }()
     
-    fileprivate let ratingStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .center
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 4
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let starPointSize: CGFloat = 15
-        for _ in 1...5 {
-            let emptyStarImageView = UIImageView(image: #imageLiteral(resourceName: "empty_star"))
-            emptyStarImageView.translatesAutoresizingMaskIntoConstraints = false
-            emptyStarImageView.contentMode = .scaleAspectFit
-            emptyStarImageView.heightAnchor.constraint(equalToConstant: starPointSize).isActive = true
-            emptyStarImageView.widthAnchor.constraint(equalToConstant: starPointSize).isActive = true
-            
-            let filledStarImageView = UIImageView(image: #imageLiteral(resourceName: "filled_star"))
-            emptyStarImageView.addSubview(filledStarImageView)
-
-            filledStarImageView.translatesAutoresizingMaskIntoConstraints = false
-            filledStarImageView.contentMode = .scaleAspectFit
-            filledStarImageView.heightAnchor.constraint(equalToConstant: starPointSize).isActive = true
-            filledStarImageView.widthAnchor.constraint(equalToConstant: starPointSize).isActive = true
-            filledStarImageView.centerXAnchor.constraint(equalTo: filledStarImageView.superview!.centerXAnchor).isActive = true
-            filledStarImageView.centerYAnchor.constraint(equalTo: filledStarImageView.superview!.centerYAnchor).isActive = true
-            
-            // set the filledStars initial height and width for masking purposes during initial load of cell
-            filledStarImageView.frame.size.height = starPointSize
-            filledStarImageView.frame.size.width = starPointSize
-            
-            stackView.addArrangedSubview(emptyStarImageView)
-        }
-        return stackView
-    }()
-    
-    fileprivate let ratingLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = .darkGray
-        return label
-    }()
+    fileprivate let ratingStackView = RatingView()
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -96,25 +55,27 @@ class BrowseChefCell: UICollectionViewCell {
         addSubview(specialityLabel)
         addSubview(ratingStackView)
         
+        NSLayoutConstraint.activate([
         
-        // imageView
-        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
-        
-        // nameLabel
-        nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4).isActive = true
-        nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
-        // specialityLabel
-        specialityLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0).isActive = true
-        specialityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4).isActive = true
-        
-        // ratingStackView
-        ratingStackView.topAnchor.constraint(equalTo: specialityLabel.bottomAnchor, constant: 0).isActive = true
-        ratingStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+            // imageView
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 4),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+            
+            // nameLabel
+            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            // specialityLabel
+            specialityLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0),
+            specialityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
+            
+            // ratingStackView
+            ratingStackView.topAnchor.constraint(equalTo: specialityLabel.bottomAnchor, constant: 0),
+            ratingStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -127,29 +88,6 @@ class BrowseChefCell: UICollectionViewCell {
         imageView.image = nil
         nameLabel.text = chef.name
         specialityLabel.text = "Food Speciality"
-        setRatingImageViews(rating: chef.rating)
-    }
-    
-    fileprivate func setRatingImageViews(rating: Double) {
-        
-        let emptyStars = ratingStackView.arrangedSubviews
-        for (index, emptyStar) in emptyStars.enumerated() {
-            let filledStar = emptyStar.subviews.first!
-            if Double(index + 1) <= rating {
-                filledStar.layer.mask = nil
-                filledStar.isHidden = false
-            } else if Double(index) < rating && rating < Double(index + 1) {
-                let maskLayer = CALayer()
-                let width = CGFloat(rating - Double(index)) * filledStar.frame.width
-                maskLayer.frame = CGRect(x: 0, y: 0, width: width, height: filledStar.frame.height)
-                maskLayer.backgroundColor = UIColor.black.cgColor
-                filledStar.isHidden = false
-                filledStar.layer.mask = maskLayer
-                
-            } else {
-                filledStar.layer.mask = nil
-                filledStar.isHidden = true
-            }
-        }
+        ratingStackView.setRatingImageViews(rating: chef.rating)
     }
 }
