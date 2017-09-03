@@ -44,7 +44,7 @@ final class BrowseRouter: NSObject, Router {
     
     func showChefDetails(chef: Chef) {
         let chefDetailViewController = ChefDetailViewController()
-        chefDetailViewController.chef = chef
+        chefDetailViewController.configureView(chef: chef)
         chefDetailViewController.navigationItem.title = chef.name
         navigationController.pushViewController(chefDetailViewController, animated: true)
     }
