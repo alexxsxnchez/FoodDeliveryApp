@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmptyView: UIView {
+class EmptyView: StateView {
     
     fileprivate let label: UILabel = {
         let label = UILabel()
@@ -19,7 +19,7 @@ class EmptyView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: centerXAnchor),

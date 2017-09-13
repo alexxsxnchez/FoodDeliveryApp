@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoadingView: UIView {
+class LoadingView: StateView {
 
     fileprivate let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
@@ -20,7 +20,7 @@ class LoadingView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        translatesAutoresizingMaskIntoConstraints = false
         addSubview(activityIndicator)
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),

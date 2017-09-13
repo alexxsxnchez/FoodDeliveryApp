@@ -11,10 +11,8 @@ import UIKit
 class BrowseChefCellDelegate : NSObject {
     
     let presentor: BrowsePresentor
-    let chefs: [DivisionHeader:[Chef]]
     
-    init(chefs: [DivisionHeader:[Chef]], presentor: BrowsePresentor) {
-        self.chefs = chefs
+    init(presentor: BrowsePresentor) {
         self.presentor = presentor
         super.init()
     }

@@ -6,9 +6,11 @@
 //  Copyright © 2017 Alex Sanchez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol StateViewController: class {
+    
+    //var stateView: StateView { get set }
     
     func showLoading()
     
@@ -17,4 +19,15 @@ protocol StateViewController: class {
     func showError(errorMessage: String)
     
     func showActual()
+}
+
+extension StateViewController {
+    func constrainSubViewToBoundsOfSuper(subView: UIView, superView: UIView) {
+        NSLayoutConstraint.activate([
+            subView.topAnchor.constraint(equalTo: superView.topAnchor),
+            subView.leadingAnchor.constraint(equalTo: superView.leadingAnchor),
+            subView.trailingAnchor.constraint(equalTo: superView.trailingAnchor),
+            subView.bottomAnchor.constraint(equalTo: superView.bottomAnchor)
+        ])
+    }
 }

@@ -31,7 +31,6 @@ class BrowseChefCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
-        
         label.numberOfLines = 2
         return label
     }()

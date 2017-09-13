@@ -21,10 +21,9 @@ final class BrowseRouter: NSObject, Router {
         self.appRouter = appRouter
         super.init()
         setupInitViewController()
-        
     }
     
-    fileprivate func setupInitViewController() {
+    func setupInitViewController() {
         browseViewController = BrowseViewController()
         browseViewController.navigationItem.title = "Browse"
         let presentor = BrowsePresentor(viewController: browseViewController, stateController: stateController, router: self)

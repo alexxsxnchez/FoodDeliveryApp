@@ -27,6 +27,7 @@ class BrowsePresentor {
             self.viewController.setupDataSourcesAndDelegates(chefs: chefs)
             self.viewController.showActual()
             //self.viewController.showError(errorMessage: "ERROR")
+            //self.viewController.showEmpty()
         }
         
     }

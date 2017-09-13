@@ -11,27 +11,26 @@ import UIKit
 class BrowseViewController: UIViewController {
 
     // MARK: - Properties
-    
     var presentor: BrowsePresentor!
     
-    var divisionCollectionViewDataSource: BrowseDivisionCellDataSource! {
+    fileprivate var divisionCollectionViewDataSource: BrowseDivisionCellDataSource! {
         didSet {
             collectionView.dataSource = divisionCollectionViewDataSource
         }
     }
     
-    var divisionCollectionViewDelegate: BrowseDivisionCellDelegate! {
+    fileprivate var divisionCollectionViewDelegate: BrowseDivisionCellDelegate! {
         didSet {
             collectionView.delegate = divisionCollectionViewDelegate
         }
     }
     
-    var chefCollectionViewDataSource: BrowseChefCellDataSource!
+    fileprivate var chefCollectionViewDataSource: BrowseChefCellDataSource!
     
-    var chefCollectionViewDelegate: BrowseChefCellDelegate!
+    fileprivate var chefCollectionViewDelegate: BrowseChefCellDelegate!
     
     // MARK: - UI Elements
-    let collectionView: UICollectionView = {
+    fileprivate let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,9 +40,10 @@ class BrowseViewController: UIViewController {
         return collectionView
     }()
     
-    var loadingView: LoadingView?
-    var emptyView: EmptyView?
-    var errorView: ErrorView?
+    fileprivate var loadingView: LoadingView?
+    fileprivate var emptyView: EmptyView?
+    fileprivate var errorView: ErrorView?
+    fileprivate var stateView: StateView?
     
     // MARK: - Init
     
@@ -65,7 +65,7 @@ class BrowseViewController: UIViewController {
         chefCollectionViewDataSource = BrowseChefCellDataSource(chefs: chefs)
         divisionCollectionViewDataSource = BrowseDivisionCellDataSource(presentor: presentor)
         // delegates
-        chefCollectionViewDelegate = BrowseChefCellDelegate(chefs: chefs, presentor: presentor)
+        chefCollectionViewDelegate = BrowseChefCellDelegate(presentor: presentor)
         divisionCollectionViewDelegate = BrowseDivisionCellDelegate(chefCollectionViewDataSource: chefCollectionViewDataSource, chefCollectionViewDelegate: chefCollectionViewDelegate)
     }
     
@@ -75,42 +75,37 @@ class BrowseViewController: UIViewController {
 extension BrowseViewController: StateViewController {
     
     func showError(errorMessage: String) {
-        errorView = ErrorView(frame: view.frame)
-        errorView?.errorMessage = errorMessage
-        view.addSubview(errorView!)
-        errorView?.isHidden = false
-        loadingView?.isHidden = false
-        emptyView?.isHidden = true
+        stateView = ErrorView(errorMessage: errorMessage)
+        view.addSubview(stateView!)
+        constrainSubViewToBoundsOfSuper(subView: stateView!, superView: view)
         collectionView.isHidden = true
     }
     
     func showLoading() {
-        loadingView = LoadingView(frame: view.frame)
-        view.addSubview(loadingView!)
-        errorView?.isHidden = true
-        loadingView?.isHidden = false
-        emptyView?.isHidden = true
+        stateView = LoadingView()
+        view.addSubview(stateView!)
+        constrainSubViewToBoundsOfSuper(subView: stateView!, superView: view)
         collectionView.isHidden = true
-        
     }
     
     func showEmpty() {
-        emptyView = EmptyView(frame: view.frame)
-        view.addSubview(emptyView!)
-        errorView?.isHidden = true
-        loadingView?.isHidden = true
-        emptyView?.isHidden = false
+        stateView = EmptyView()
+        view.addSubview(stateView!)
+        constrainSubViewToBoundsOfSuper(subView: stateView!, superView: view)
+//        errorView?.isHidden = true
+//        loadingView?.isHidden = true
+//        emptyView?.isHidden = false
         collectionView.isHidden = true
     }
     
     func showActual() {
         view.addSubview(collectionView)
-        errorView?.isHidden = true
-        loadingView?.isHidden = true
-        emptyView?.isHidden = true
-        collectionView.alpha = 0.0
+//        errorView?.isHidden = true
+//        loadingView?.isHidden = true
+//        emptyView?.isHidden = true
+        stateView = nil
         collectionView.isHidden = false
-        
+        collectionView.alpha = 0.0
         // constraints
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
@@ -118,6 +113,7 @@ extension BrowseViewController: StateViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
         ])
+        //constrainSubViewToBoundsOfSuper(subView: collectionView, superView: view)
         
         UIView.animate(withDuration: 0.3) {
             self.collectionView.alpha = 1.0

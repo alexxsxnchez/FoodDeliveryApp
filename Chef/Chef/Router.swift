@@ -9,6 +9,7 @@
 import UIKit
 
 protocol Router {
+    func setupInitViewController()
     /*func show(controller: UIViewController)
     func showEmpty()
     func showLoading()

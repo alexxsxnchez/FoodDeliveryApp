@@ -32,7 +32,7 @@ class ChefController {
         DispatchQueue.main.asyncAfter(deadline: when) {
             // Your code with delay
             let chefs = [
-            Chef(name: "very very very extremely long name", rating: 0),
+            Chef(name: "very very very extremely longgggggggg name", rating: 0),
             Chef(name: "very very long name", rating: 0.33),
             Chef(name: "name", rating: 0.75),
             Chef(name: "name", rating: 2.4),

@@ -42,7 +42,7 @@ class ChefBioView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = UIColor.darkText
+        label.textColor = UIColor.darkGray
         label.numberOfLines = 0
         label.textAlignment = .justified
         return label
@@ -66,7 +66,7 @@ class ChefBioView: UIView {
         expandingView.addSubview(dummyLabel)
         addSubview(moreButton)
         dummyLabel.numberOfLines = minNumberOfLines
-        moreButton.addTarget(self, action: #selector(toggleButtonTapped(_:)), for: .touchUpInside)
+        moreButton.addTarget(self, action: #selector(moreButtonTapped(_:)), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             // ExpandingView
@@ -88,7 +88,7 @@ class ChefBioView: UIView {
             // MoreButton
             moreButton.topAnchor.constraint(equalTo: expandingView.bottomAnchor),
             moreButton.trailingAnchor.constraint(equalTo: expandingView.trailingAnchor),
-            moreButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+            moreButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4)
         ])
     }
     
@@ -100,9 +100,19 @@ class ChefBioView: UIView {
     func setText(to text: String) {
         dummyLabel.text = text
         actualLabel.text = text
+        print(actualLabel.font.lineHeight)
+        //if actualLabel.font.lineHeight * minNumberOfLines
+        let textHeight = text.height(withConstrainedWidth: 200, font: dummyLabel.font)
+        if textHeight <= dummyLabel.intrinsicContentSize.height {
+            moreButton.isHidden = true
+        }
+        
+        print(textHeight)
+        print(dummyLabel.intrinsicContentSize.height)
+        
     }
     
-    func toggleButtonTapped(_ sender: UIButton) {
+    func moreButtonTapped(_ sender: UIButton) {
         isExpanded = !isExpanded
         let numberOfLines = isExpanded ? 0 : minNumberOfLines
         dummyLabel.numberOfLines = numberOfLines

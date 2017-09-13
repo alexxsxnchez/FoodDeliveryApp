@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B58B99C1F64B13100A979CB /* Something.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58B99B1F64B13100A979CB /* Something.swift */; };
+		6B58B99E1F64B9BE00A979CB /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58B99D1F64B9BE00A979CB /* StateView.swift */; };
+		6B58B9A01F65159D00A979CB /* String+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58B99F1F65159D00A979CB /* String+Height.swift */; };
+		6B58B9A61F6781A400A979CB /* ChefDetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58B9A51F6781A400A979CB /* ChefDetailScrollView.swift */; };
 		6B59FB4B1F3DF8D00031BBB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB4A1F3DF8D00031BBB1 /* AppDelegate.swift */; };
 		6B59FB4D1F3DF8D00031BBB1 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FB4C1F3DF8D00031BBB1 /* BrowseViewController.swift */; };
 		6B59FB521F3DF8D00031BBB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B59FB511F3DF8D00031BBB1 /* Assets.xcassets */; };
@@ -41,9 +45,21 @@
 		6B59FBB01F54F2BD0031BBB1 /* ChefBioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBAF1F54F2BD0031BBB1 /* ChefBioView.swift */; };
 		6B59FBB41F59BCE80031BBB1 /* ChefHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBB31F59BCE80031BBB1 /* ChefHeaderView.swift */; };
 		6B59FBB61F5B6F380031BBB1 /* ChefTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBB51F5B6F380031BBB1 /* ChefTabView.swift */; };
+		6B59FBB81F5C88B50031BBB1 /* ChefMenuReviewContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBB71F5C88B50031BBB1 /* ChefMenuReviewContainerView.swift */; };
+		6B59FBBA1F5F024E0031BBB1 /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBB91F5F024E0031BBB1 /* MenuDataSource.swift */; };
+		6B59FBBC1F5F033D0031BBB1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBBB1F5F033D0031BBB1 /* Menu.swift */; };
+		6B59FBBE1F5F035A0031BBB1 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBBD1F5F035A0031BBB1 /* FoodItem.swift */; };
+		6B59FBC01F5F04F10031BBB1 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBBF1F5F04F10031BBB1 /* MenuSection.swift */; };
+		6B59FBC21F5F16010031BBB1 /* MenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBC11F5F16010031BBB1 /* MenuHeader.swift */; };
+		6B59FBC41F649C720031BBB1 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBC31F649C720031BBB1 /* MenuCell.swift */; };
+		6B59FBC61F64A6110031BBB1 /* MenuCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B59FBC51F64A6110031BBB1 /* MenuCollectionViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B58B99B1F64B13100A979CB /* Something.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Something.swift; sourceTree = "<group>"; };
+		6B58B99D1F64B9BE00A979CB /* StateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
+		6B58B99F1F65159D00A979CB /* String+Height.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
+		6B58B9A51F6781A400A979CB /* ChefDetailScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChefDetailScrollView.swift; sourceTree = "<group>"; };
 		6B59FB471F3DF8D00031BBB1 /* Chef.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chef.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B59FB4A1F3DF8D00031BBB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B59FB4C1F3DF8D00031BBB1 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +96,14 @@
 		6B59FBAF1F54F2BD0031BBB1 /* ChefBioView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChefBioView.swift; sourceTree = "<group>"; };
 		6B59FBB31F59BCE80031BBB1 /* ChefHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChefHeaderView.swift; sourceTree = "<group>"; };
 		6B59FBB51F5B6F380031BBB1 /* ChefTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChefTabView.swift; sourceTree = "<group>"; };
+		6B59FBB71F5C88B50031BBB1 /* ChefMenuReviewContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChefMenuReviewContainerView.swift; sourceTree = "<group>"; };
+		6B59FBB91F5F024E0031BBB1 /* MenuDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
+		6B59FBBB1F5F033D0031BBB1 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		6B59FBBD1F5F035A0031BBB1 /* FoodItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
+		6B59FBBF1F5F04F10031BBB1 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = "<group>"; };
+		6B59FBC11F5F16010031BBB1 /* MenuHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeader.swift; sourceTree = "<group>"; };
+		6B59FBC31F649C720031BBB1 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		6B59FBC51F64A6110031BBB1 /* MenuCollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +117,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B58B9A11F6700B900A979CB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6B59FBB31F59BCE80031BBB1 /* ChefHeaderView.swift */,
+				6B59FBAF1F54F2BD0031BBB1 /* ChefBioView.swift */,
+				6B59FBB71F5C88B50031BBB1 /* ChefMenuReviewContainerView.swift */,
+				6B59FBB51F5B6F380031BBB1 /* ChefTabView.swift */,
+				6B58B9A51F6781A400A979CB /* ChefDetailScrollView.swift */,
+				6B58B9A41F6700FC00A979CB /* CellViews */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6B58B9A21F6700D200A979CB /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				6B59FBB91F5F024E0031BBB1 /* MenuDataSource.swift */,
+			);
+			name = DataSources;
+			sourceTree = "<group>";
+		};
+		6B58B9A31F6700DE00A979CB /* TableCollectionViewDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				6B59FBC51F64A6110031BBB1 /* MenuCollectionViewDelegate.swift */,
+			);
+			name = TableCollectionViewDelegates;
+			sourceTree = "<group>";
+		};
+		6B58B9A41F6700FC00A979CB /* CellViews */ = {
+			isa = PBXGroup;
+			children = (
+				6B59FBC31F649C720031BBB1 /* MenuCell.swift */,
+				6B59FBC11F5F16010031BBB1 /* MenuHeader.swift */,
+			);
+			name = CellViews;
+			sourceTree = "<group>";
+		};
 		6B59FB3E1F3DF8D00031BBB1 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +184,7 @@
 				6B59FB511F3DF8D00031BBB1 /* Assets.xcassets */,
 				6B59FB531F3DF8D00031BBB1 /* LaunchScreen.storyboard */,
 				6B59FB561F3DF8D00031BBB1 /* Info.plist */,
+				6B58B99F1F65159D00A979CB /* String+Height.swift */,
 			);
 			path = Chef;
 			sourceTree = "<group>";
@@ -162,6 +225,9 @@
 			children = (
 				6B59FB601F3DFC7E0031BBB1 /* Chef.swift */,
 				6B59FB6C1F424A7E0031BBB1 /* DivisionHeader.swift */,
+				6B59FBBB1F5F033D0031BBB1 /* Menu.swift */,
+				6B59FBBF1F5F04F10031BBB1 /* MenuSection.swift */,
+				6B59FBBD1F5F035A0031BBB1 /* FoodItem.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -207,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				6B59FB9F1F50A8E30031BBB1 /* StateViewController.swift */,
+				6B58B99D1F64B9BE00A979CB /* StateView.swift */,
 				6B59FB991F5067D20031BBB1 /* EmptyView.swift */,
 				6B59FB9B1F50680A0031BBB1 /* LoadingView.swift */,
 				6B59FB9D1F5068150031BBB1 /* ErrorView.swift */,
@@ -312,9 +379,10 @@
 			isa = PBXGroup;
 			children = (
 				6B59FB7C1F4380460031BBB1 /* ChefDetailViewController.swift */,
-				6B59FBB31F59BCE80031BBB1 /* ChefHeaderView.swift */,
-				6B59FBAF1F54F2BD0031BBB1 /* ChefBioView.swift */,
-				6B59FBB51F5B6F380031BBB1 /* ChefTabView.swift */,
+				6B58B9A11F6700B900A979CB /* Views */,
+				6B58B9A21F6700D200A979CB /* DataSources */,
+				6B58B9A31F6700DE00A979CB /* TableCollectionViewDelegates */,
+				6B58B99B1F64B13100A979CB /* Something.swift */,
 			);
 			name = ChefDetail;
 			sourceTree = "<group>";
@@ -393,32 +461,44 @@
 			files = (
 				6B59FBA01F50A8E30031BBB1 /* StateViewController.swift in Sources */,
 				6B59FB8D1F4A50CB0031BBB1 /* BrowseRouter.swift in Sources */,
+				6B58B9A01F65159D00A979CB /* String+Height.swift in Sources */,
 				6B59FB7F1F4383B60031BBB1 /* OrderController.swift in Sources */,
 				6B59FB6F1F4291BA0031BBB1 /* NetworkController.swift in Sources */,
+				6B59FBBE1F5F035A0031BBB1 /* FoodItem.swift in Sources */,
 				6B59FB711F429BC80031BBB1 /* StateController.swift in Sources */,
+				6B59FBB81F5C88B50031BBB1 /* ChefMenuReviewContainerView.swift in Sources */,
 				6B59FB781F437CA20031BBB1 /* BrowseChefCellDelegate.swift in Sources */,
 				6B59FB8B1F4A22CD0031BBB1 /* SeeAllCellDelegate.swift in Sources */,
 				6B59FB6B1F424A040031BBB1 /* ChefController.swift in Sources */,
+				6B59FBBC1F5F033D0031BBB1 /* Menu.swift in Sources */,
+				6B59FBC41F649C720031BBB1 /* MenuCell.swift in Sources */,
+				6B59FBC01F5F04F10031BBB1 /* MenuSection.swift in Sources */,
 				6B59FB4D1F3DF8D00031BBB1 /* BrowseViewController.swift in Sources */,
 				6B59FBB41F59BCE80031BBB1 /* ChefHeaderView.swift in Sources */,
 				6B59FB651F3DFF090031BBB1 /* BrowseChefCellDataSource.swift in Sources */,
 				6B59FB831F4766D40031BBB1 /* SeeAllCell.swift in Sources */,
 				6B59FBB01F54F2BD0031BBB1 /* ChefBioView.swift in Sources */,
 				6B59FB5D1F3DFB0E0031BBB1 /* BrowseDivisionCell.swift in Sources */,
+				6B59FBBA1F5F024E0031BBB1 /* MenuDataSource.swift in Sources */,
 				6B59FBA71F50BED40031BBB1 /* SeeAllPresentor.swift in Sources */,
 				6B59FB891F4A21470031BBB1 /* SeeAllCellDataSource.swift in Sources */,
 				6B59FB7B1F437E090031BBB1 /* BrowseDivisionCellDelegate.swift in Sources */,
 				6B59FB6D1F424A7E0031BBB1 /* DivisionHeader.swift in Sources */,
+				6B58B99C1F64B13100A979CB /* Something.swift in Sources */,
 				6B59FB4B1F3DF8D00031BBB1 /* AppDelegate.swift in Sources */,
 				6B59FB8F1F4A513A0031BBB1 /* Router.swift in Sources */,
 				6B59FB631F3DFD5A0031BBB1 /* BrowseDivisionCellDataSource.swift in Sources */,
 				6B59FB611F3DFC7E0031BBB1 /* Chef.swift in Sources */,
+				6B59FBC61F64A6110031BBB1 /* MenuCollectionViewDelegate.swift in Sources */,
 				6B59FB7D1F4380460031BBB1 /* ChefDetailViewController.swift in Sources */,
 				6B59FB911F4A628B0031BBB1 /* AppRouter.swift in Sources */,
 				6B59FB9E1F5068150031BBB1 /* ErrorView.swift in Sources */,
 				6B59FBB61F5B6F380031BBB1 /* ChefTabView.swift in Sources */,
 				6B59FB951F4FCD800031BBB1 /* BrowsePresentor.swift in Sources */,
+				6B58B9A61F6781A400A979CB /* ChefDetailScrollView.swift in Sources */,
 				6B59FB5F1F3DFBA20031BBB1 /* BrowseChefCell.swift in Sources */,
+				6B58B99E1F64B9BE00A979CB /* StateView.swift in Sources */,
+				6B59FBC21F5F16010031BBB1 /* MenuHeader.swift in Sources */,
 				6B59FB9C1F50680A0031BBB1 /* LoadingView.swift in Sources */,
 				6B59FB851F47681A0031BBB1 /* RatingView.swift in Sources */,
 				6B59FB9A1F5067D20031BBB1 /* EmptyView.swift in Sources */,
@@ -580,6 +660,7 @@
 				6B59FB5B1F3DF8D00031BBB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
